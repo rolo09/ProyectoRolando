@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="inventariosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="app_articulo">
+          <Key>
+            <PropertyRef Name="id_articulo" />
+          </Key>
+          <Property Name="id_articulo" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="descripcion_articulo" Type="nvarchar" MaxLength="45" Nullable="false" />
+          <Property Name="ultima_compra" Type="smalldatetime" Nullable="false" />
+          <Property Name="ultima_salida" Type="smalldatetime" Nullable="false" />
+          <Property Name="minimo" Type="int" Nullable="false" />
+          <Property Name="maximo" Type="int" Nullable="false" />
+          <Property Name="saldo" Type="int" Nullable="false" />
+          <Property Name="id_inventario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="app_conteo">
+          <Key>
+            <PropertyRef Name="id_conteo" />
+          </Key>
+          <Property Name="id_conteo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_inventario" Type="int" Nullable="false" />
+          <Property Name="id_articulo" Type="int" Nullable="false" />
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="conteo" Type="int" Nullable="false" />
+          <Property Name="nota" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="fecha" Type="smalldatetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="app_inventario">
+          <Key>
+            <PropertyRef Name="id_inventario" />
+          </Key>
+          <Property Name="id_inventario" Type="int" Nullable="false" />
+          <Property Name="descripcion_inventario" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="app_usuario">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usuario" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="clave" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="id_inventario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="inventariosModelStoreContainer">
+          <EntitySet Name="app_articulo" EntityType="Self.app_articulo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="app_conteo" EntityType="Self.app_conteo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="app_inventario" EntityType="Self.app_inventario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="app_usuario" EntityType="Self.app_usuario" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="inventariosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="app_articulo">
+          <Key>
+            <PropertyRef Name="id_articulo" />
+          </Key>
+          <Property Name="id_articulo" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="descripcion_articulo" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ultima_compra" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ultima_salida" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="minimo" Type="Int32" Nullable="false" />
+          <Property Name="maximo" Type="Int32" Nullable="false" />
+          <Property Name="saldo" Type="Int32" Nullable="false" />
+          <Property Name="id_inventario" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="app_conteo">
+          <Key>
+            <PropertyRef Name="id_conteo" />
+          </Key>
+          <Property Name="id_conteo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_inventario" Type="Int32" Nullable="false" />
+          <Property Name="id_articulo" Type="Int32" Nullable="false" />
+          <Property Name="id_usuario" Type="Int32" Nullable="false" />
+          <Property Name="conteo" Type="Int32" Nullable="false" />
+          <Property Name="nota" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="app_inventario">
+          <Key>
+            <PropertyRef Name="id_inventario" />
+          </Key>
+          <Property Name="id_inventario" Type="Int32" Nullable="false" />
+          <Property Name="descripcion_inventario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="app_usuario">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usuario" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="clave" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_inventario" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="inventariosEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="app_articulo" EntityType="Self.app_articulo" />
+          <EntitySet Name="app_conteo" EntityType="Self.app_conteo" />
+          <EntitySet Name="app_inventario" EntityType="Self.app_inventario" />
+          <EntitySet Name="app_usuario" EntityType="Self.app_usuario" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="inventariosModelStoreContainer" CdmEntityContainer="inventariosEntities">
+          <EntitySetMapping Name="app_articulo">
+            <EntityTypeMapping TypeName="inventariosModel.app_articulo">
+              <MappingFragment StoreEntitySet="app_articulo">
+                <ScalarProperty Name="id_articulo" ColumnName="id_articulo" />
+                <ScalarProperty Name="descripcion_articulo" ColumnName="descripcion_articulo" />
+                <ScalarProperty Name="ultima_compra" ColumnName="ultima_compra" />
+                <ScalarProperty Name="ultima_salida" ColumnName="ultima_salida" />
+                <ScalarProperty Name="minimo" ColumnName="minimo" />
+                <ScalarProperty Name="maximo" ColumnName="maximo" />
+                <ScalarProperty Name="saldo" ColumnName="saldo" />
+                <ScalarProperty Name="id_inventario" ColumnName="id_inventario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="app_conteo">
+            <EntityTypeMapping TypeName="inventariosModel.app_conteo">
+              <MappingFragment StoreEntitySet="app_conteo">
+                <ScalarProperty Name="id_conteo" ColumnName="id_conteo" />
+                <ScalarProperty Name="id_inventario" ColumnName="id_inventario" />
+                <ScalarProperty Name="id_articulo" ColumnName="id_articulo" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="conteo" ColumnName="conteo" />
+                <ScalarProperty Name="nota" ColumnName="nota" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="app_inventario">
+            <EntityTypeMapping TypeName="inventariosModel.app_inventario">
+              <MappingFragment StoreEntitySet="app_inventario">
+                <ScalarProperty Name="id_inventario" ColumnName="id_inventario" />
+                <ScalarProperty Name="descripcion_inventario" ColumnName="descripcion_inventario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="app_usuario">
+            <EntityTypeMapping TypeName="inventariosModel.app_usuario">
+              <MappingFragment StoreEntitySet="app_usuario">
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="clave" ColumnName="clave" />
+                <ScalarProperty Name="id_inventario" ColumnName="id_inventario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

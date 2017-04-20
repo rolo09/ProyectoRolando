@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppConteo.Springboard">
+    <!--  Grilla principal de la página  -->
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+
+        <!--  Colores de fondo de las filas  -->
+        <BoxView Grid.Row="0" Color="#3A444D" />
+        <BoxView Grid.Row="1" Color="#F1F2F2" />
+        <BoxView Grid.Row="2" Color="#3A444D" />
+
+        <!--  Título  -->
+        <Label FontSize="Large" HorizontalOptions="Center" Text="Menú principal"
+               TextColor="White" VerticalOptions="Center" />
+
+        <!--  Diseño interior de los botones  -->
+        <Grid Grid.Row="1" ColumnSpacing="5" HorizontalOptions="Center"
+              RowSpacing="5" VerticalOptions="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!--  Botones con las opciones de menú, las imagenes se pueden personalizar en cada plataforma  -->
+            <Button Grid.Row="0" Grid.Column="0" Text="Login" Image="login.png" />
+            <Button Grid.Row="0" Grid.Column="1" Text="Artículos" Image="article.png" x:Name="btnArticulos"/>
+            <Button Grid.Row="1" Grid.Column="0" Text="Conteo físico" Image="count.png"/>
+            <Button Grid.Row="1" Grid.Column="1" Text="Sincroniza datos" Image="syncronize.png" x:Name="btnSincronizar"/>
+        </Grid>
+    </Grid>
+</ContentPage>

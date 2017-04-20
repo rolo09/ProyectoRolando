@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:AppConteo"
+             x:Class="AppConteo.MainPage">
+
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <BoxView Grid.Row="0" Color="#3A444D" />
+        <BoxView Grid.Row="1" Color="#F1F2F2" />
+        <BoxView Grid.Row="2" Color="#3A444D" />
+
+        <Label FontSize="Large" HorizontalOptions="Center" Text="Inicio de sesión"
+               TextColor="White" VerticalOptions="Center" />
+
+        <Grid Grid.Row="1" ColumnSpacing="5" HorizontalOptions="Center"
+              RowSpacing="5" VerticalOptions="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="25" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!--  Botones con las opciones de menú, las imagenes se pueden personalizar en cada plataforma  -->
+            <Label Grid.Row="0" FontSize="Medium" Text="Usuario:"/>
+            <Entry Grid.Row="1" x:Name="txtUsuario" Placeholder="Digite el usuario" Text="rmora"/>
+            <Label Grid.Row="2" FontSize="Medium" Text="Clave:"/>
+            <Entry Grid.Row="3" x:Name="txtClave" IsPassword="True" Placeholder="Digite la clave" Text="rmf123"/>
+            <Button Grid.Row="4" x:Name="btnAceptar" Text="Aceptar" Image="user.png"/>
+            <Button Grid.Row="5" x:Name="btnRecibir" Text="Recibir usuarios" Image="syncronize.png"/>
+        </Grid>
+
+    </Grid>
+
+</ContentPage>

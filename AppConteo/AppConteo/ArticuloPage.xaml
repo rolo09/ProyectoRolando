@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppConteo.ArticuloPage">
+
+    <ScrollView>
+        <StackLayout Padding="10" Spacing="10">
+            <Label Text="Artículo de inventario" FontSize="Large" HorizontalOptions="Center"/>
+            <Label Text="Código:"/>
+            <Label x:Name="lblId" FontSize="Medium"/>
+            <Label Text="Descripción:"/>
+            <Label x:Name="lblDescripcion" FontSize="Medium"/>
+            <Label Text="Última compra:"/>
+            <Label x:Name="lblUltCompra" FontSize="Medium"/>
+            <Label Text="Última salida:"/>
+            <Label x:Name="lblUltSalida" FontSize="Medium"/>
+            <Label Text="Mínimo:"/>
+            <Label x:Name="lblMinimo" FontSize="Medium"/>
+            <Label Text="Máximo:"/>
+            <Label x:Name="lblMaximo" FontSize="Medium"/>
+            <Button x:Name="btnConteo" Text="Registrar conteo físico..." HorizontalOptions="Center"/>
+        </StackLayout>
+    </ScrollView>
+    
+</ContentPage>
