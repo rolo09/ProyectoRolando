@@ -32,10 +32,10 @@
             </Grid.ColumnDefinitions>
 
             <!--  Botones con las opciones de menú, las imagenes se pueden personalizar en cada plataforma  -->
-            <Button Grid.Row="0" Grid.Column="0" Text="Login" Image="login.png" />
+            <Button Grid.Row="0" Grid.Column="0" Text="Login" Image="login.png" x:Name="btnLogin"/>
             <Button Grid.Row="0" Grid.Column="1" Text="Artículos" Image="article.png" x:Name="btnArticulos"/>
-            <Button Grid.Row="1" Grid.Column="0" Text="Conteo físico" Image="count.png"/>
-            <Button Grid.Row="1" Grid.Column="1" Text="Sincroniza datos" Image="syncronize.png" x:Name="btnSincronizar"/>
+            <Button Grid.Row="1" Grid.Column="0" Text="Recibir datos" Image="download.png" x:Name="btnRecibir"/>
+            <Button Grid.Row="1" Grid.Column="1" Text="Enviar datos" Image="upload.png" x:Name="btnEnviar"/>
         </Grid>
     </Grid>
 </ContentPage>

@@ -170,6 +170,12 @@
   <ItemGroup>
     <AndroidResource Include="Resources\Drawable\user.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Drawable\download.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Drawable\upload.png" />
+  </ItemGroup>
   <Import Project="..\AppConteo\AppConteo.projitems" Label="Shared" Condition="Exists('..\AppConteo\AppConteo.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets" Condition="Exists('..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets')" />

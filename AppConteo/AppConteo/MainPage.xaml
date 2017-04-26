@@ -16,10 +16,10 @@
         <BoxView Grid.Row="2" Color="#3A444D" />
 
         <Label FontSize="Large" HorizontalOptions="Center" Text="Inicio de sesión"
-               TextColor="White" VerticalOptions="Center" />
+            TextColor="White" VerticalOptions="Center" />
 
         <Grid Grid.Row="1" ColumnSpacing="5" HorizontalOptions="Center"
-              RowSpacing="5" VerticalOptions="Center">
+            RowSpacing="5" VerticalOptions="Center">
             <Grid.RowDefinitions>
                 <RowDefinition Height="25" />
                 <RowDefinition Height="50" />
@@ -37,7 +37,8 @@
             <Button Grid.Row="4" x:Name="btnAceptar" Text="Aceptar" Image="user.png"/>
             <Button Grid.Row="5" x:Name="btnRecibir" Text="Recibir usuarios" Image="syncronize.png"/>
         </Grid>
-
+        <ActivityIndicator IsRunning="{Binding IsLoading, Mode=TwoWay}" x:Name="cargando" Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center"/>
     </Grid>
+
 
 </ContentPage>

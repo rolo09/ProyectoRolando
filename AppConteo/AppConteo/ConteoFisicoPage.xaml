@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppConteo.ConteoFisicoPage">
+
+    
+
+    <ScrollView>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Text="Nuevo" x:Name="btnNuevoConteo" Grid.Column="0"/>
+            <Button Text="Modificar" x:Name="btnModificarConteo" Grid.Column="1"/>
+            <Button Text="Eliminar" x:Name="btnEliminarConteo" Grid.Column="2"/>
+
+            <Label Text="Conteo físico para el artículo:" HorizontalOptions="Center" FontSize="Large" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"/>
+            <Label Text="Código:" Grid.Row="2" Grid.Column="0"/>
+            <Label x:Name="lblIdArt" FontSize="Medium" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"/>
+            <Label Text="Descripción:" Grid.Row="3" Grid.Column="0"/>
+            <Label x:Name="lblDescArt" FontSize="Medium" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"/>
+
+            <Label Text="Cantidad:" Grid.Row="4" Grid.Column="0"/>
+            <Entry Placeholder="Ingrese la cantidad contada" x:Name="txtCantidad" Keyboard="Numeric" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"/>
+
+            <Label Text="Nota:" Grid.Row="5" Grid.Column="0"/>
+            <Entry Placeholder="Ingrese alguna nota (Opcional)" x:Name="txtNota" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3"/>
+
+            <ListView x:Name="listaConteo" Grid.Row="7" Grid.ColumnSpan="3"  SeparatorColor="Black"/>
+
+        </Grid>
+    </ScrollView>
+    
+</ContentPage>

@@ -27,7 +27,7 @@ namespace AppConteo.Droid
                 System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
             app.Contexto.RutaConexion += "/inventario.db3";
 
-            app.Contexto.NuevaConexion = () => new SQLite.Net.SQLiteConnection(new SQLite.Net.Platform.XamarinAndroid.SQLitePlatformAndroid(), app.Contexto.RutaConexion);
+            app.Contexto.NuevaConexion = () => new SQLite.Net.SQLiteConnection(new SQLite.Net.Platform.XamarinAndroid.SQLitePlatformAndroid(), app.Contexto.RutaConexion, false);
 
             LoadApplication(app);
 		}

@@ -18,7 +18,7 @@
             <Label x:Name="lblMinimo" FontSize="Medium"/>
             <Label Text="Máximo:"/>
             <Label x:Name="lblMaximo" FontSize="Medium"/>
-            <Button x:Name="btnConteo" Text="Registrar conteo físico..." HorizontalOptions="Center"/>
+            <Button x:Name="btnConteo" Text="Ir a conteo físico..." HorizontalOptions="Center"/>
         </StackLayout>
     </ScrollView>
     

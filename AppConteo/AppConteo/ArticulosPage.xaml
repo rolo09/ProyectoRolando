@@ -6,7 +6,7 @@
     <ScrollView>
         <StackLayout>
             <Label Text="Artículos de inventario" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold"/>
-            <Entry Placeholder="Buscar por código o descripción" x:Name="txtBuscar" Text="" VerticalOptions="Center"/>
+            <Entry Placeholder="Buscar por código o descripción" x:Name="txtBuscar" Text="" VerticalOptions="Center"  />
             <ListView x:Name="listaArticulos"/>
             <Button Text="Limpiar búsqueda" x:Name="btnLimpiar" HorizontalOptions="Center" />
         </StackLayout>

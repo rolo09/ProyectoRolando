@@ -5,7 +5,8 @@ using Xamarin.Forms;
 
 namespace AppConteo
 {
-    class ArticuloCell : ViewCell
+    //Formatear el listview de artículos
+    public class ArticuloCell : ViewCell
     {
         public ArticuloCell()
         {

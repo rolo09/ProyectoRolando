@@ -19,6 +19,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)ArticulosPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ConteoFisicoPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -31,6 +34,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Springboard.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)VariablesGlobales.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)MainPage.xaml">
@@ -54,6 +58,11 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)ArticuloPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)ConteoFisicoPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

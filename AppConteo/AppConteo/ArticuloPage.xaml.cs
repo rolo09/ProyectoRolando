@@ -25,7 +25,7 @@ namespace AppConteo
             InitializeComponent ();
 
             this.articulo = articulo;
-
+            //Cargar datos a las etiquetas
             lblId.Text = articulo.id_articulo;
             lblDescripcion.Text = articulo.descripcion_articulo;
             lblUltCompra.Text = articulo.ultima_compra.ToString();
@@ -33,6 +33,12 @@ namespace AppConteo
             lblMaximo.Text = articulo.maximo.ToString();
             lblMinimo.Text = articulo.minimo.ToString();
 
-		}
+            btnConteo.Clicked += async (s, e) =>
+            {
+                //Ir a la ventana de conteo
+                await Navigation.PushModalAsync(new ConteoFisicoPage(Contexto, this.articulo));
+            };
+
+        }
 	}
 }

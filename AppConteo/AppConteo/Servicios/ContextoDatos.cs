@@ -24,13 +24,6 @@ namespace AppConteo.Servicios
             using (var conexion = NuevaConexion())
             {
                 conexion.CreateTable<TClass>();
-
-                var query = conexion.Table<TClass>().ToArray();
-
-                foreach (var item in query)
-                {
-                    Debug.WriteLine(item.ToString());
-                }
             }
         }
 
@@ -59,7 +52,54 @@ namespace AppConteo.Servicios
             
         }
 
-        public bool validarUsuario(string usuario, string clave)
+        //Actualizar tabla
+        public void Actualizar<TClass>(TClass[] elementos)
+            where TClass : class
+        {
+            try
+            {
+                using (var conexion = NuevaConexion())
+                {
+                    conexion.RunInTransaction(() =>
+                    {
+                        foreach (var item in elementos)
+                        {
+                            conexion.Update(item);
+                        }
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        //Eliminar tabla
+        public void Borrar<TClass>(TClass[] elementos)
+            where TClass : class
+        {
+            try
+            {
+                using (var conexion = NuevaConexion())
+                {
+                    conexion.RunInTransaction(() =>
+                    {
+                        foreach (var item in elementos)
+                        {
+                            conexion.Delete(item);
+                        }
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        //Validar usuario
+        public int validarUsuario(string usuario, string clave)
         {
             using (var conexion = NuevaConexion())
             {
@@ -67,15 +107,16 @@ namespace AppConteo.Servicios
                 var data1 = data.Where(x => x.usuario == usuario && x.clave == clave).FirstOrDefault();
                 if (data1 != null)
                 {
-                    return true;
+                    return data1.id_usuario;
                 }
                 else
                 {
-                    return false;
+                    return 0;
                 }
             }   
         }
 
+        //Devolver un artículo específico
         public Articulo GetArticulo(string codigo)
         {
             using (var conexion = NuevaConexion())
@@ -84,6 +125,7 @@ namespace AppConteo.Servicios
             }
         }
 
+        //Devolver una lista de artículos con filtro
         public List<Articulo> GetArticulos(string buscar)
         {
             using (var conexion = NuevaConexion())
@@ -92,6 +134,33 @@ namespace AppConteo.Servicios
                     return conexion.Table<Articulo>().OrderBy(c => c.id_articulo).ToList();
                 else
                     return conexion.Table<Articulo>().Where(x => x.id_articulo.Contains(buscar) || x.descripcion_articulo.Contains(buscar)).OrderBy(c => c.id_articulo).ToList();
+            }
+        }
+
+        //Devolver un conteo específico
+        public Conteo GetConteo(int id)
+        {
+            using (var conexion = NuevaConexion())
+            {
+                return conexion.Table<Conteo>().FirstOrDefault(x => x.id_conteo == id);
+            }
+        }
+
+        //Devolver la lista de conteos de un artículo específico
+        public List<Conteo> GetConteos(string id_articulo)
+        {
+            using (var conexion = NuevaConexion())
+            {
+                return conexion.Table<Conteo>().Where(x => x.id_articulo == id_articulo).OrderBy(c => c.id_conteo).ToList();
+            }
+        }
+
+        //Devolver todos los conteos existentes
+        public List<Conteo> GetConteosTodos()
+        {
+            using (var conexion = NuevaConexion())
+            {
+                return conexion.Table<Conteo>().ToList();
             }
         }
 
@@ -104,6 +173,7 @@ namespace AppConteo.Servicios
             }
         }
 
+        //Cerrar conexión
         public void Dispose()
         {
             using (var conexion = NuevaConexion())

@@ -17,6 +17,35 @@ namespace AppConteo.Servicios
     class ServicioRest
     {
         public ContextoDatos Contexto { get; set; }
+        //URL genérica
+        private string url = "http://190.2.223.1:10080/apiWebXamarin/api";
+
+        //Enviar conteos hacia el servidor
+        public async void setConteos(ContextoDatos contexto)
+        {
+            try
+            {
+                Contexto = contexto;
+                using (var httpClient = new HttpClient())
+                {
+                    var resultado = Contexto.GetConteosTodos();
+
+                    foreach (var item in resultado)
+                    {
+                        string parseo = JsonConvert.SerializeObject(item);
+                        await httpClient.PostAsync(url + "/conteos", new StringContent(parseo, Encoding.UTF8, "application/json")).ConfigureAwait(false);
+                    }
+                    contexto.EjecutarComando("DELETE FROM Conteos");
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            
+        }
+
+        //Recibir usuarios desde el servidor
         public async void getUsuarios(ContextoDatos contexto)
         {
             try
@@ -25,7 +54,7 @@ namespace AppConteo.Servicios
                 using (var httpClient = new HttpClient())
                 {
                     HttpResponseMessage llamada = 
-                        await httpClient.GetAsync("http://172.28.130.25/apiWebXamarin/api/usuarios").ConfigureAwait(false);
+                        await httpClient.GetAsync(url + "/usuarios").ConfigureAwait(false);
 
                     if (llamada.IsSuccessStatusCode)
                     {
@@ -46,6 +75,7 @@ namespace AppConteo.Servicios
             }
         }
 
+        //Recibir inventarios desde el servidor
         public async void getInventarios(ContextoDatos contexto)
         {
             try
@@ -54,7 +84,7 @@ namespace AppConteo.Servicios
                 using (var httpClient = new HttpClient())
                 {
                     HttpResponseMessage llamada =
-                        await httpClient.GetAsync("http://172.28.130.25/apiWebXamarin/api/inventarios").ConfigureAwait(false);
+                        await httpClient.GetAsync(url + "/inventarios").ConfigureAwait(false);
 
                     if (llamada.IsSuccessStatusCode)
                     {
@@ -75,6 +105,7 @@ namespace AppConteo.Servicios
             }
         }
 
+        //Recibir artículos desde el servidor
         public async void getArticulos(ContextoDatos contexto)
         {
             try
@@ -83,7 +114,7 @@ namespace AppConteo.Servicios
                 using (var httpClient = new HttpClient())
                 {
                     HttpResponseMessage llamada =
-                        await httpClient.GetAsync("http://172.28.130.25/apiWebXamarin/api/articulos").ConfigureAwait(false);
+                        await httpClient.GetAsync(url + "/articulos").ConfigureAwait(false);
 
                     if (llamada.IsSuccessStatusCode)
                     {

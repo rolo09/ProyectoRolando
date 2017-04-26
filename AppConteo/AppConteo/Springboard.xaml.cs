@@ -22,11 +22,19 @@ namespace AppConteo
 
             InitializeComponent ();
 
+            //Botón login
+            btnLogin.Clicked += async (s, e) =>
+            {
+                await Navigation.PopModalAsync();
+            };
+
+            //Botón artículos
             btnArticulos.Clicked += (s, e) => {
                 Navigation.PushModalAsync(new ArticulosPage(Contexto));
             };
 
-            btnSincronizar.Clicked += async (s, e) =>
+            //Botón recibir desde el servidor
+            btnRecibir.Clicked += async (s, e) =>
             {
                 if (!CrossConnectivity.Current.IsConnected)
                 {
@@ -34,7 +42,7 @@ namespace AppConteo
                     return;
                 }
 
-                if (await DisplayAlert("Sincronizar", "¿Desea sincronizar los datos?", "Aceptar", "Cancelar"))
+                if (await DisplayAlert("Sincronizar", "¿Desea recibir datos desde el servidor?", "Aceptar", "Cancelar"))
                 {
                     //Eliminar inventarios existentes
                     Contexto.EjecutarComando("DELETE FROM Inventarios");
@@ -46,6 +54,25 @@ namespace AppConteo
                     Contexto.EjecutarComando("DELETE FROM Articulos");
                     //Leer articulos de la WebAPI y insertarlos en la tabla de SQLite
                     servicio.getArticulos(Contexto);
+
+                    await DisplayAlert("Datos recibidos", "Se han recibido correctamente los datos.", "Aceptar");
+                }
+            };
+
+            //Botón enviar hacia el servidor
+            btnEnviar.Clicked += async (s, e) =>
+            {
+                if (!CrossConnectivity.Current.IsConnected)
+                {
+                    await DisplayAlert("Conexión", "No hay una conexión de internet. Pruebe de nuevo.", "Aceptar");
+                    return;
+                }
+
+                if (await DisplayAlert("Sincronizar", "¿Desea enviar los datos hacia el servidor?", "Aceptar", "Cancelar"))
+                {
+                    var servicio = new Servicios.ServicioRest();
+                    servicio.setConteos(Contexto);
+                    await DisplayAlert("Datos enviados", "Se han enviados correctamente los datos.", "Aceptar");
                 }
             };
 		}
